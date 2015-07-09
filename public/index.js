@@ -1,6 +1,6 @@
 var app = angular.module("chatClient", [])
 
-app.controller("ChatController", function($scope, $http, $interval, $location, $anchorScroll){
+app.controller("ChatController", function($scope, $http, $interval, $location, $anchorScroll, $timeout){
 
 	$scope.active = {
 		compose: true,
@@ -23,7 +23,6 @@ app.controller("ChatController", function($scope, $http, $interval, $location, $
 
 					
 				})
-				$scope.goToBottom()
 			}).error(function(){
 				console.log('no')
 			})
@@ -110,6 +109,7 @@ app.controller("ChatController", function($scope, $http, $interval, $location, $
 		console.log("bottom?")
 	}
 
+	$timeout($scope.goToBottom, 90)
 	$interval(getMessages, 30000)
 	$interval(getUsers, 60000)
 
