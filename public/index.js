@@ -1,6 +1,6 @@
 var app = angular.module("chatClient", [])
 
-app.controller("ChatController", function($scope, $http, $interval){
+app.controller("ChatController", function($scope, $http, $interval, $location, $anchorScroll){
 
 	$scope.active = {
 		compose: true,
@@ -19,19 +19,11 @@ app.controller("ChatController", function($scope, $http, $interval){
 
 				angular.forEach($scope.messages, function(message){
 
-					/*var myUser
-					angular.forEach($scope.users, function(user){
-						//console.log(user._id)
-						if (user._id === message._id) {
-
-							message.username = user.username
-						}
-					})*/
-			
-		
 					message.time = moment(message.timestamp).format("dddd hh:mm")
-					//console.log(message)
+
+					
 				})
+				$scope.goToBottom()
 			}).error(function(){
 				console.log('no')
 			})
@@ -51,6 +43,7 @@ app.controller("ChatController", function($scope, $http, $interval){
 	}
 
 	$scope.submitMessage=function(){
+		$scope.goToBottom()
 		if (!$scope.user_id) {
 			alert("You must be someone to chat!")
 			return
@@ -62,10 +55,11 @@ app.controller("ChatController", function($scope, $http, $interval){
 			status: $scope.currentStatus,
 		})
 			.success(function(data){
-				console.log("poo")
+				$scope.messageText = ""
+				getMessages()
 
 			}).error(function(){
-				console.log('no')
+
 			})
 	}
 
@@ -79,7 +73,7 @@ app.controller("ChatController", function($scope, $http, $interval){
 			user_id: $scope.user_id,
 		})
 			.success(function(){
-				console.log("Sttus changed")
+				console.log("Status changed")
 			})
 	}
 
@@ -106,10 +100,18 @@ app.controller("ChatController", function($scope, $http, $interval){
 		$scope.active.create = !$scope.active.create
 	}
 
-
-	getUsers()
 	getMessages()
+	getUsers()
+	
 
+	$scope.goToBottom = function() {
+		$location.hash('bottom')
+		$anchorScroll()
+		console.log("bottom?")
+	}
+
+	$interval(getMessages, 30000)
+	$interval(getUsers, 60000)
 
 
 })
