@@ -123,12 +123,15 @@ span {
 
 .tab {
 	border-bottom: solid 1px black;
-	border-right: groove 1px black;
 	width: 50%;
 	text-align: center;
 	font-size: 15px;
 	background: rgb(140,140,140);
 	line-height: 20px;
+}
+
+.tab:first-of-type {
+	border-right: groove 1px black;
 }
 
 .tab.active {
@@ -174,9 +177,10 @@ span {
 
 .message-window {
 	width: 70%;
-	height: 100vh;
+	height: 100%;
 	font-size: 15px;
 	overflow: auto;
+	padding-top: 80px;
 }
 
 .message-box {
@@ -187,13 +191,18 @@ span {
 .user-box {
 	width: 20%;
 	padding: 5px;
-	text-align: center;
+	text-align: left;
+	padding-left: 10px;
 	background-color: rgb(100,100,100);
 	border-right: 1px solid rgb(40,40,40);
 }
 
 .user {
 	color: rgb(220,220,220)
+}
+
+.time {
+	color: rgb(40,40,40);	
 }
 
 .message-text {
