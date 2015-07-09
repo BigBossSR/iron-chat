@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="chatClient">
+<head>
+	<title>Locuta Ferrum</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="shortcut icon" href="assets/cake.ico" type="image/x-icon" />
+</head>
+<body>
+
+<div class="page-container" ng-controller="ChatController">
+
+	<div class="top-bar">
+		<div class="title-box il">
+			<div class="logo il"></div>
+			<span class="title">Iron Chat</span>
+		</div>
+		
+		<div class="chat-settings il">
+			<span>Chatting as </span>
+			<select ng-model="user_id">
+				<option ng-repeat="user in users" ng-model="currentUser" ng-value="user._id">{{user.username}}</option>
+			</select>
+			<div class="status-icon il" ng-class="currentStatus" ng-click="changeStatus()"></div>
+			<select ng-model="currentStatus">
+				<option value="active">Active</option>
+				<option value="busy">Busy</option>
+				<option value="inactive">Inactive</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="sidebar il">
+		<div class="user-list">
+			<div class="user-entry" ng-repeat="user in users">
+				<div class="status-icon il" ng-class="user.status"></div>
+				<div class="username il">{{user.username}} | <span class="lite">{{user.fullname}}</span></div>
+			</div>
+		</div>
+
+		<div class="tab-container">
+			<div class="tab-heads">
+				<div class="tab il" ng-click="toggleTabs()">Create User</div>
+				<div class="tab il active" ng-click="toggleTabs()">Compose</div>
+			</div>
+
+			<div class="tab-content">
+				<div class="create-window" ng-show="active.create">
+					User Name: <input type="text" ng-model="userName">
+					<br>
+						<span class="lite">Your unique identifier</span>
+						<br>
+					Full Name: <input type="text" ng-model="fullName">
+					<br>
+						<span class="lite">What your mother calls you</span>
+						<br>
+					Status: 
+						<select ng-model="newStatus">
+							<option value="active">Active</option>
+							<option value="busy">Busy</option>
+							<option value="inactive">Inactive</option>
+						</select>
+					<br>
+						<span class="lite">Are you actively chatting?</span>
+					<br>
+					<button ng-click="createUser()" class="submit">Create User</button>
+				</div>
+				
+				<div class="compose-window" ng-show="active.compose">
+					<input type="text" class="compose-box" ng-model="messageText">
+					<button ng-click="submitMessage()" class="submit">Send Message</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="message-window il" >
+		<div class="message-box" ng-repeat="message in messages">
+			<div class="user-box il">
+				<div class="status-icon il" ng-class="userStatus[message.user_id]"></div>
+				<div class="user il">{{ userLookup[ message.user_id ] ? userLookup[ message.user_id ] : "a ghost?" }}</div>
+				<div class="time">{{message.time}}</div>
+			</div>
+			<div class="message-text il">{{message.text}}</div>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="libs/angular.js"></script>
+<script type="text/javascript" src="libs/moment.min.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>
