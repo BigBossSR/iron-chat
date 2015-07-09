@@ -33,11 +33,11 @@ app.controller("ChatController", function($scope, $http, $interval, $location, $
 		$http.get("https://tiy-chat-server.herokuapp.com/user")
 			.success(function(data){
 				$scope.users = data
-				angular.forEach($scope.users, function(user){
+				angular.forEach(data, function(user){
 					$scope.userLookup[user._id] = user.username
 					$scope.userStatus[user._id] = user.status
 				})
-				//console.log($scope.userLookup)
+				console.log($scope.userLookup)
 				//console.log(data)
 			})
 	}
