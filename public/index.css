@@ -24,7 +24,7 @@ span {
 	width: 100%;
 	box-shadow: 0px 3px 5px gray;
 	background-color: rgb(40,40,40);
-	color: rgb(235,235,235);
+	color: RGB(114, 114, 98);
 	position: fixed;
 }
 
@@ -65,7 +65,7 @@ span {
 .chat-settings select {
 	border-radius: 0px;
 	background-color: rgb(70,70,70);
-	border: solid 1px rgb(220,220,220);
+	border: solid 1px RGB(114, 114, 98);
 	color: rgb(220,220,220);
 	height: 25px;
 }
@@ -85,17 +85,17 @@ span {
 }
 
 .status-icon.active {
-	background-color: green;
+	background-color: rgb(48, 81, 59);
 }
 
 
 .status-icon.busy {
-	background-color: yellow;
+	background-color: rgb(117,111,26);
 }
 
 
 .status-icon.inactive {
-	background-color: red;
+	background-color: rgb(113,15,16);
 }
 
 .sidebar {
@@ -110,6 +110,12 @@ span {
 	border-bottom: solid 2px rgb(40,40,40);
 	overflow: scroll;
 	font-size: 15px;
+	font-family: palatino, serif;
+	word-wrap: ;
+	min-width: 180px;
+	overflow-x: scroll;
+	white-space: nowrap;
+
 }
 
 .tab-container {
@@ -126,7 +132,7 @@ span {
 	width: 50%;
 	text-align: center;
 	font-size: 15px;
-	background: rgb(140,140,140);
+	background: rgb(100,100,100);
 	line-height: 20px;
 }
 
@@ -148,6 +154,8 @@ span {
 	font-size: 12px;
 	font-style: italic;
 	color: rgb(80,80,80);
+	font-family: tahoma;
+	vertical-align: top;
 }
 
 .instruction {
@@ -162,7 +170,7 @@ span {
 	height: 25vh;
 	margin-bottom: 20px;
 	font-size: 15px;
-	padding: 5px;
+	padding: 10px;
 }
 
 .submit {
@@ -177,8 +185,8 @@ span {
 
 .message-window {
 	width: 70%;
-	height: 100%;
-	font-size: 15px;
+	height: 100vh;
+	font-size: 14px;
 	overflow: auto;
 	padding-top: 80px;
 }
@@ -191,18 +199,22 @@ span {
 .user-box {
 	width: 20%;
 	padding: 5px;
+	background-color: rgba(100,100,80,.9);
 	text-align: left;
 	padding-left: 10px;
-	background-color: rgb(100,100,100);
 	border-right: 1px solid rgb(40,40,40);
 }
 
 .user {
-	color: rgb(220,220,220)
+	color: rgb(220,220,220);
+	word-wrap:break-word;
+	word-break: break-all;
 }
 
 .time {
-	color: rgb(40,40,40);	
+	color: rgb(40,40,40);
+	vertical-align: super;
+	margin-left: 5px;	
 }
 
 .message-text {
@@ -217,4 +229,10 @@ span {
 
 #bottom{
 	font-size: 0px;
+	height: .01vh;
+}
+
+.icon-box {
+	width: 25px;
+	height: 100%;
 }
