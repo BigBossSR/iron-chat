@@ -110,8 +110,8 @@ app.controller("ChatController", function($scope, $http, $interval, $location, $
 	}
 
 	$timeout($scope.goToBottom, 90)
-	$interval(getMessages, 30000)
-	$interval(getUsers, 60000)
+/*	$interval(getMessages, 30000)
+	$interval(getUsers, 60000)*/
 
 
 })

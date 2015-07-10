@@ -32,8 +32,10 @@
 	<div class="sidebar il">
 		<div class="user-list">
 			<div class="user-entry" ng-repeat="user in users">
-				<div class="status-icon il" ng-class="user.status"></div>
-				<div class="username il">{{user.username}} | <span class="lite">{{user.fullname}}</span></div>
+				<div class="username il">
+					<div class="status-icon il" ng-class="user.status"></div>
+					{{user.username}} | <span class="lite">{{user.fullname}}</span>
+				</div>
 			</div>
 		</div>
 
@@ -80,9 +82,11 @@
 	<div class="message-window il" >
 		<div class="message-box" ng-repeat="message in messages">
 			<div class="user-box il">
-				<div class="status-icon il" ng-class="userStatus[message.user_id]"></div>
 				<div class="user il">{{ userLookup[ message.user_id ] ? userLookup[ message.user_id ] : message.user_id }}</div>
-				<div class="time lite">{{message.time}}</div>
+				<div class="lite">
+					<div class="status-icon il" ng-class="userStatus[message.user_id]"></div>
+					<div class="time il">{{message.time}}</div>
+				</div>
 			</div>
 			<div class="message-text il">{{message.text}}</div>
 		</div>
